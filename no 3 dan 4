@@ -1,0 +1,42 @@
+Logika Backtracking dalam Program
+Program ini menggunakan algoritma backtracking untuk menemukan kombinasi optimal dari destinasi, hotel, transportasi, dan aktivitas yang memaksimalkan nilai kepuasan pengguna sambil tetap berada dalam batasan anggaran yang ditetapkan.
+Bagaimana Algoritma Backtracking Bekerja dalam Program:
+
+Struktur Rekursif: Metode backtrack() dipanggil secara rekursif untuk mengeksplorasi semua kemungkinan kombinasi perjalanan.
+Pembatasan (Pruning): Program segera menghentikan eksplorasi cabang ketika biaya saat ini melebihi anggaran yang tersedia (if current_cost > self.total_budget: return).
+Urutan Keputusan: Program mengambil keputusan dalam urutan tertentu:
+
+Pertama memilih destinasi
+Kemudian memilih hotel
+Lalu memilih transportasi
+Terakhir menambahkan aktivitas opsional
+
+
+Pengujian Solusi: Setiap kali program mencapai solusi lengkap (memiliki destinasi, hotel, dan transportasi), ia memeriksa apakah nilai kepuasan saat ini lebih baik dari nilai maksimal yang ditemukan sebelumnya. Jika ya, solusi tersebut disimpan.
+Percobaan Pilihan: Program mencoba setiap kemungkinan item pada setiap level keputusan:
+
+Mencoba semua destinasi yang mungkin
+Mencoba semua hotel yang mungkin
+Mencoba semua transportasi yang mungkin
+Mencoba semua kombinasi aktivitas yang mungkin
+
+
+Backtracking: Setelah mencoba satu pilihan dan semua percabangannya, program "mundur" (backtrack) dengan menghapus pilihan tersebut dari solusi sementara (selected.pop()) dan mencoba pilihan berikutnya.
+
+Analisis Kelebihan
+
+Menemukan Solusi Optimal: Algoritma backtracking menjamin bahwa solusi yang ditemukan adalah yang optimal karena menjelajahi semua kemungkinan kombinasi yang valid.
+Efisiensi dengan Pruning: Program menghentikan eksplorasi cabang yang tidak mungkin memenuhi batasan anggaran, menghemat waktu komputasi.
+Fleksibilitas: Program dapat menangani sejumlah destinasi, hotel, transportasi, dan aktivitas yang berubah-ubah tanpa perubahan algoritma.
+Urutan Prioritas: Logika memastikan bahwa komponen wajib (destinasi, hotel, transportasi) dipilih terlebih dahulu sebelum menambahkan aktivitas opsional.
+Struktur Data Efisien: Penggunaan struktur data sederhana (list dan dictionary) membuat kode mudah dimengerti dan dimodifikasi.
+
+Analisis Kekurangan
+
+Kompleksitas Waktu Eksponensial: Dalam kasus terburuk, algoritma backtracking memiliki kompleksitas waktu O(n^m), di mana n adalah jumlah pilihan untuk setiap kategori dan m adalah jumlah kategori. Ini berarti jumlah waktu yang dibutuhkan akan meningkat secara eksponensial dengan bertambahnya jumlah pilihan.
+Tidak Mempertimbangkan Kompatibilitas: Program tidak memperhitungkan bahwa beberapa kombinasi mungkin tidak kompatibel (misalnya, hotel tertentu mungkin tidak tersedia di destinasi tertentu).
+Keterbatasan Struktur Data: Program menggabungkan semua jenis item dalam satu daftar selected yang sama dan menggunakan tuple untuk merepresentasikan setiap item, yang kurang fleksibel dibandingkan pendekatan berorientasi objek.
+Pemilihan Berurutan Tetap: Algoritma selalu memilih dalam urutan yang sama (destinasi → hotel → transportasi → aktivitas), yang mungkin tidak ideal untuk semua kasus pengguna.
+Ketergantungan pada Input Pengguna: Kualitas solusi sangat bergantung pada kualitas dan akurasi nilai dan biaya yang dimasukkan pengguna.
+Beban Komputasi: Untuk input yang besar (banyak pilihan di setiap kategori), waktu eksekusi dapat menjadi sangat panjang karena sifat eksponensial algoritma backtracking.
+Tidak Ada Optimasi untuk Backtracking: Program tidak mengimplementasikan teknik optimasi lanjutan seperti memoization atau forward checking yang dapat meningkatkan kinerja.
